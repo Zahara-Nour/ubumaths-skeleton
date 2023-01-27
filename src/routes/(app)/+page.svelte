@@ -1,12 +1,21 @@
 <script lang="ts">
 	import { Avatar } from '@skeletonlabs/skeleton'
-	import { MathfieldElement } from 'mathlive'
+	import type { MathfieldElement } from 'mathlive'
 	import { afterUpdate } from 'svelte'
+	import { touchDevice, mathliveReady, mathfieldElement } from '$lib/stores'
 
+	let mfe: MathfieldElement | null
 	afterUpdate(() => {
-		const mfe = new MathfieldElement()
-		mfe.value = '\\frac{\\pi}{2}+\\placeholder[blank1]{}+3456'
-		document.body.appendChild(mfe)
+		if (!mfe && $mathfieldElement) {
+			mfe = new $mathfieldElement()
+			mfe.value = '\\frac{\\pi}{2}+\\placeholder[blank1]{}+3456'
+			console.log('formalua',document.getElementById('formula'))
+			if (document.getElementById('formula')) {
+				console.log('found section')
+				document.getElementById('formula')?.appendChild(mfe)
+			}
+			console.log('mfe', mfe)
+		}
 	})
 </script>
 
@@ -36,6 +45,7 @@
 		</div>
 	</div>
 </div>
+<div id='formula'></div>
 
 <div class="container mx-auto p-8 space-y-8">
 	<h1>Hello Skeleton</h1>
@@ -46,7 +56,7 @@
 	</section>
 	<hr />
 	<Avatar src="https://i.pravatar.cc/" />
-	<section class="flex space-x-2">
+	<section id="section" class="flex space-x-2">
 		<a
 			class="btn variant-filled-primary"
 			href="https://kit.svelte.dev/"
