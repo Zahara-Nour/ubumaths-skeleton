@@ -11,7 +11,6 @@
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
-	<math-field>f(x) = \sin(x+\pi)</math-field>
 	<div class="space-y-10 text-center">
 		<h2 class="font-bold">Welcome to Skeleton.</h2>
 		<!-- Animated Logo -->
