@@ -1,6 +1,17 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
+	import { Avatar } from '@skeletonlabs/skeleton'
+	import { MathfieldElement } from 'mathlive'
+	import { afterUpdate } from 'svelte'
+
+	afterUpdate(() => {
+		const mfe = new MathfieldElement()
+		mfe.value = '\\frac{\\pi}{2}+\\placeholder[blank1]{}+3456'
+		document.body.appendChild(mfe)
+	})
+</script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
+	<math-field>f(x) = \sin(x+\pi)</math-field>
 	<div class="space-y-10 text-center">
 		<h2 class="font-bold">Welcome to Skeleton.</h2>
 		<!-- Animated Logo -->
@@ -15,7 +26,9 @@
 		</figure>
 		<!-- / -->
 		<div class="flex justify-center space-x-2">
-			<a class="btn btn-filled" href="https://skeleton.dev/" target="_blank" rel="noreferrer">Launch Documentation</a>
+			<a class="btn btn-filled" href="https://skeleton.dev/" target="_blank" rel="noreferrer"
+				>Launch Documentation</a
+			>
 		</div>
 		<div class="space-y-2">
 			<p>Try editing the following:</p>
@@ -23,6 +36,37 @@
 			<p><code>/src/routes/+page.svelte</code></p>
 		</div>
 	</div>
+</div>
+
+<div class="container mx-auto p-8 space-y-8">
+	<h1>Hello Skeleton</h1>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	<hr />
+	<section class="card p-4">
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	</section>
+	<hr />
+	<Avatar src="https://i.pravatar.cc/" />
+	<section class="flex space-x-2">
+		<a
+			class="btn variant-filled-primary"
+			href="https://kit.svelte.dev/"
+			target="_blank"
+			rel="noreferrer">SvelteKit</a
+		>
+		<a
+			class="btn variant-filled-secondary"
+			href="https://tailwindcss.com/"
+			target="_blank"
+			rel="noreferrer">Tailwind</a
+		>
+		<a
+			class="btn variant-filled-tertiary"
+			href="https://github.com/"
+			target="_blank"
+			rel="noreferrer">GitHub</a
+		>
+	</section>
 </div>
 
 <style lang="postcss">
