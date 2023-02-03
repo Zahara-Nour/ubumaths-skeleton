@@ -1,4 +1,4 @@
-import math from 'tinycas'
+import math from 'tinycas-ts'
 // loggers
 type Level = 'trace' | 'debug' | 'info' | 'warn' | 'fail'
 type Noop = () => void

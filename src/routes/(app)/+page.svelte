@@ -1,20 +1,22 @@
 <script lang="ts">
 	import { Avatar } from '@skeletonlabs/skeleton'
 	import type { MathfieldElement } from 'mathlive'
-	import { afterUpdate } from 'svelte'
+	import { afterUpdate, onMount } from 'svelte'
 	import { touchDevice, mathliveReady, mathfieldElement } from '$lib/stores'
+	import math from 'tinycas-ts'
 
+	console.log('math', math)
+	const e = math('3+1/5')
 	let mfe: MathfieldElement | null
+	console.log('e', e)
+
 	afterUpdate(() => {
 		if (!mfe && $mathfieldElement) {
 			mfe = new $mathfieldElement()
-			mfe.value = '\\frac{\\pi}{2}+\\placeholder[blank1]{}+3456'
-			console.log('formalua',document.getElementById('formula'))
+			mfe.value = e.latex
 			if (document.getElementById('formula')) {
-				console.log('found section')
 				document.getElementById('formula')?.appendChild(mfe)
 			}
-			console.log('mfe', mfe)
 		}
 	})
 </script>
@@ -45,7 +47,7 @@
 		</div>
 	</div>
 </div>
-<div id='formula'></div>
+<div id="formula" />
 
 <div class="container mx-auto p-8 space-y-8">
 	<h1>Hello Skeleton</h1>
@@ -62,18 +64,6 @@
 			href="https://kit.svelte.dev/"
 			target="_blank"
 			rel="noreferrer">SvelteKit</a
-		>
-		<a
-			class="btn variant-filled-secondary"
-			href="https://tailwindcss.com/"
-			target="_blank"
-			rel="noreferrer">Tailwind</a
-		>
-		<a
-			class="btn variant-filled-tertiary"
-			href="https://github.com/"
-			target="_blank"
-			rel="noreferrer">GitHub</a
 		>
 	</section>
 </div>
